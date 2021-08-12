@@ -17,6 +17,7 @@ In case your data is not huge (so it's processing becomes expensive), this appro
 superior in our code bases. 
 
 ```ts
+// lib/api/fetchers.ts
 import {pipe, fromSepCase, fromCamelCase, toSnakeCase, toCamelCase, convertData} from "kecasn"
 
 // string -> string
