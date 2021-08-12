@@ -1,10 +1,11 @@
 # KeCaSn
 
-**WIP** Change strings from `snake_case` to `camelCase` or `kebab-case` and vice versa. 
-Supports nested arrays and objects.
+**WIP** Convert strings from `snake_case` to `camelCase` or `kebab-case` and vice versa. 
+Convert nested arrays and objects (models) as well. Upgrade your legacy API and use camelCase
+on the frontend with no refactoring.
 
-This library was created to automatically "upgrade" legacy APIs so you can use convenient and consistent
-camelCase on the FE and keep using snake_case on the BE (API inputs & outputs).
+This library was created to automatically "upgrade" API handlers so you can use convenient and consistent
+camelCase on the FE and keep using snake_case on the BE (API inputs & outputs). 
 
 ## Realistic Example
 
