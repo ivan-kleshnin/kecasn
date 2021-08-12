@@ -24,7 +24,7 @@ export const fetchPosts = async (query : FetchPostsQuery) : Promise<FetchPostsRe
   const result = await fetchAPI(["SEARCH", "/api/posts"], {
     body: {                                 // FE                         -> BE 
       fields: snakifyValues((query.fields), // ["postTitle"]              -> ["post_title"]
-      where: snakifyKeys(query.where),      // {postTags: ["TypeScript"]} -> {post_tags: ["TypeScript]}
+      where: snakifyKeys(query.where),      // {postTags: ["TypeScript"]} -> {post_tags: ["TypeScript"]}
       order: snakifyValues(query.order),    // ["postTitle:asc"]          -> ["post_title:asc"]
       page: query.page || 1, 
       limit: query.limit || 10
