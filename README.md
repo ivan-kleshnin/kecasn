@@ -99,7 +99,8 @@ and the following value of `posts` variable:
 
 All case casting functions work with **words** i.e. space separated strings. 
 This common format is necesary to reduce the number of converting functions (explained below).
-`toXxx` function expects words and produces a cased string.
+
+Each `toXyz` function expects words and produces a cased string.
 
 #### `toCamelCase : (s : string) => string`
 
@@ -124,7 +125,7 @@ toKebabCase("foo:bar") // "foo:bar"  -- /
 
 ### Case to Words
 
-`fromXxx` function expects a cased string and produces words.
+Each `fromXyz` function expects a cased string and produces words.
 
 #### `fromCamelCase : (s : string) => string`
 
