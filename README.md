@@ -4,7 +4,7 @@ Change strings from `snake_case` to `camelCase` or `kebab-case` and vice versa.
 Supports nested arrays and objects.
 
 This library is built to automatically "upgrade" legacy APIs so you can use convenient and consistent
-camelCase in your FE code and keep using snake_case in API handler input & output.
+camelCase in your FE code and keep using snake_case in API input & output.
 
 ## Example
 
@@ -15,7 +15,7 @@ import {pipe, toSnakeCase, toCamelCase, convertStr, convertData} from "kecasn"
 const camelizeStr = pipe(fromSepCase("_"), toCamelCase) // Until JS natively supports `|>` pipeline operator
 const snakifyStr = pipe(fromCamelCase, toSnakeCase)     // ...
 
-// any -> any
+// unknown -> unknown
 const camelizeData = convertData(camelizeStr)
 const snakifyData = convertData(snakifyStr)
 
