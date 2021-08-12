@@ -42,6 +42,47 @@ Note that `camelizeData` and `snakifyData` are unable to guess the output type: 
 is a type change in general. It's not a problem whenever `unknown` is isolated within a strictly typed
 function (like the above `fetchPosts`).
 
+Let's iterate over the above example one more time. The following call: 
+
+```ts
+const posts = await fetchPosts({
+  fields: ["id", "postTitle"], 
+  where: {postTags: ["TypeScript"]}, 
+  order: ["postTitle:asc"],
+  limit: 2
+})
+```
+
+will cause the following HTTP exchange: 
+
+```
+-> SEARCH /api/posts
+{
+  "fields": ["id", post_title"],        // values are snakified!
+  "where": {post_tags: ["TypeScript"]}, // keys are snakified, values are unchanged!
+  "order": ["post_title:asc"],          // values are snakified!
+  "limit": 2  
+}
+
+<- 200 OK
+{
+  "models": [
+    {"id": 1, "post_title": "First Post"}, 
+    {"id": 2, "post_title": "Second Post"}
+  ]
+  "total": 24
+}
+```
+
+and the following value of `posts` variable:
+
+```ts
+[
+  {"id": 1, "postTitle": "First Post"}, // keys are camelized, values are unchanged!
+  {"id": 2, "postTitle": "Second Post"} // keys are camelized, values are unchanged!
+]
+```
+
 ## Related Projects
 
 - [Change-Case](https://github.com/blakeembrey/change-case): string-only, more supported cases, more settings.
