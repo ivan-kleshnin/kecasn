@@ -12,6 +12,10 @@ Many older APIs consume and return data in snake_case format and a rewrite may c
 Tolerating the problem is not an option as from the fetching layer snake_case will quickly 
 reach form field names, validators, etc and you'll have to constantly think which case to use where.
 
+A better solution might be to lock snake_case and all the necessary conversion in the API handling layer. 
+In case your data is not huge (so it's processing becomes expensive), this approach has proven itself
+superior in our code bases. 
+
 ```ts
 import {pipe, fromSepCase, fromCamelCase, toSnakeCase, toCamelCase, convertData} from "kecasn"
 
