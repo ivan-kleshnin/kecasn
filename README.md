@@ -146,22 +146,40 @@ More realistic example was given above.
 
 Case casting functions that transform string expect the initial data to consist of words.
 This is to have one common format (space separated string) and avoid proliferation of convertors
-if more string cases are going to be supported. Compare the following:
+if more string cases are going to be supported. 
+
+`fromCamel, toCamel, fromSnake, toSnake` is an objectively better design than `camelToSnake, snakeToCamel`
+
+Compare the following possible design (which was chosen):
 
 ```
 fromX, toX, fromY, toY, fromZ, toZ 
 ---
-2 * N => 2 * 3 = 6 // N: № of supported cases
+Number of functions Z1 equals:
+2 * N where N is the № of supported cases
 
-vs
-
-fromXtoY, fromXtoZ, fromYtoX, fromYtoZ, fromZtoX, fromZtoY 
----
-N ^ 2 - N => 3^2 - 3 = 6 // N: № of supported cases
+N=2 => 2 * 2 = 4
+N=3 => 2 * 3 = 6 
+N=4 => 2 * 4 = 8 
+N=5 => 2 * 5 = 10 
 ```
 
-Four supported cases would give: `2 * 4 vs 4^2 - 4` or `8 vs 12` and so on. 
-`N ^ 2 - N >> 2 * N` for larger `N` hence the design choice.
+and the following (which was rejected):
+
+```
+fromXtoY, fromXtoZ, fromYtoX, fromYtoZ, fromZtoX, fromZtoY 
+---
+Number of functions Z2 equals:
+N ^ 2 - N where N is the № of supported cases
+
+N = 2 => 2 ^ 2 - 2 = 2 (for N = 2 we get just 2 functions camelToSnake, snakeToCamel) 
+N = 3 => 3 ^ 2 - 3 = 6 (equals Z1)
+N = 4 => 4 ^ 2 - 4 = 12 (and it starts to)
+N = 5 => 5 ^ 2 - 5 = 20 (proliferate... Twice as much as the previous approach)
+```
+
+For now we support just `snake`, `kebab` and `camel` so both approaches are equivalent (in terms
+of function №). But you got the point.
 
 ## Related Projects
 
