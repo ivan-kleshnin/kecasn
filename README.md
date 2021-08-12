@@ -21,17 +21,17 @@ const snakifyData = convertData(snakifyStr)
 
 export const fetchPosts = async (query : FetchPostsQuery) : Promise<FetchPostsResult> => {
   const result = await fetchAPI(["SEARCH", "/api/posts"], {
-    body: {
-      fields: snakifyData((query.fields), // ["id", "postScore"]  -> ["id", "post_score"]
-      where: snakifyData(query.where),    // {postScore: {gt: 0}} -> {post_score: {gt: 18}}
-      order: snakifyData(query.order),    // ["postScore:asc"]    -> ["post_score:asc"]
+    body: {                               // FE                      -> BE 
+      fields: snakifyData((query.fields), // ["postTitle"]           -> ["post_title"]
+      where: snakifyData(query.where),    // {postTitle: {ne: null}} -> {post_title: {ne: null}}
+      order: snakifyData(query.order),    // ["postTitle:asc"]       -> ["post_title:asc"]
       page: query.page || 1,
       limit: query.limit || 10,
     },
   })
 
   return {
-    ...result,
+    ...result,                         // BE                           -> FE 
     models: camelizeData(result.data), // [{post_title: "Some Title"}] -> [{postTitle: "Some Title"}]
   }
 }
