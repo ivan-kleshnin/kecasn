@@ -4,7 +4,7 @@ Change strings from `snake_case` to `camelCase` or `kebab-case` and vice versa.
 Supports nested arrays and objects.
 
 This library is built to automatically "upgrade" legacy APIs so you can use convenient and consistent
-camelCase in your FE code and keep using snake_case in API input & output.
+camelCase on the FE and keep using snake_case on the BE (API inputs & outputs).
 
 ## Example
 
