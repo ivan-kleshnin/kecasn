@@ -160,8 +160,8 @@ fromXtoY, fromXtoZ, fromYtoX, fromYtoZ, fromZtoX, fromZtoY
 N ^ 2 - N => 3^2 - 3 = 6 // N: № of supported cases
 ```
 
-Four supported cases would give: `2 * 4 vs 4^2 - 4 == 8 vs 12` and so on where `N ^ 2` 
-clearly "dominates" over `2 * N`.
+Four supported cases would give: `2 * 4 vs 4^2 - 4` or `8 vs 12` and so on. 
+`N ^ 2 - N >> 2 * N` for larger `N` hence the design choice.
 
 ## Related Projects
 
