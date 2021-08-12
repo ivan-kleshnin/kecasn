@@ -142,16 +142,10 @@ fromSnakeCase("foo:bar")     // "foo:bar"     -- /
 
 #### `fromKebabCase : (s : string) => string`
 
-
 ```ts
 fromKebabCase("some-css-rule") // "some css rule" -- kebab-case is parsed (to words)
 fromKebabCase("some:css")      // "some:css"      -- /
 ```
-
-### `fromSepCase`, `toSepCase`
-
-Undocumented (but exported) functions used to build `fromSnakeCase`, `toKebabCase` etc.
-Use them if you need a different separator.
 
 ### Other
 
@@ -181,6 +175,11 @@ convertData(uppercase, {keys: true})({my_tags: ["fooBar"]})   // {MYTAGS: ["fooB
 ```
 
 More realistic example was given above.
+
+#### `fromSepCase`, `toSepCase`
+
+Undocumented (but exported) functions used to build `fromSnakeCase`, `toKebabCase` etc.
+Use them if you need a different separator.
 
 ## Design Notes
 
