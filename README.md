@@ -13,8 +13,8 @@ Tolerating the problem is not an option as from the fetching layer snake_case wi
 reach form field names, validators, etc and you'll have to constantly think which case to use where.
 
 A better solution might be to lock snake_case and all the necessary conversion in the API handling layer. 
-In case your data is not huge (so it's processing becomes expensive), this approach has proven itself
-superior in our code bases. 
+Unless your req/resp data is huge (so it's processing becomes expensive) the approach of isolating
+case changes in a single place will prove itself superior.
 
 **lib/api/fetchers.ts**
 
