@@ -9,8 +9,8 @@ camelCase on the FE and keep using snake_case on the BE (API inputs & outputs).
 ## Realistic Example
 
 Many older APIs consume and return data in snake_case format and a rewrite may cost $$$.
-The attempt to ignore the problem will become a never ending struggle, cause snake_case will reach 
-form names, validators, etc and you'll constantly think which case to use where.
+Tolerating the problem is not an options cause snake_case will reach form names, validators, etc 
+and you'll have to constantly think which case to use where.
 
 ```ts
 import {pipe, fromSepCase, fromCamelCase, toSnakeCase, toCamelCase, convertData} from "kecasn"
