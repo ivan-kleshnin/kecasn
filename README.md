@@ -87,8 +87,8 @@ and the following value of `posts` variable:
 
 #### `pipe : <X, Y, Z>(fn1 : (x : X) => Y, fn2 : (y : Y) => Z) => (x : X) : Z`
 
-Just a helper function to compose fn1 and fn2. `pipe(fn1, fn2)` is the same as `fn2(fn1)`.
-This to avoid extra declarations and typings in the absence of [native JS operator(s)](https://github.com/tc39/proposal-pipeline-operator).
+Just a tiny helper function to compose `fn1` and `fn2`. `pipe(fn1, fn2)` is the same as `fn2(fn1)`.
+Useful to avoid extra declarations and typings in the absence of [native JS operator(s)](https://github.com/tc39/proposal-pipeline-operator).
 
 #### `toCamelCase : (str : string) => string`
 
@@ -120,10 +120,14 @@ fromCamelCase("fooBar") // "foo bar"
 fromSepCase("_")("foo_bar:baz") // "foo bar:baz"
 ```
 
-#### `convertData : (convertStr : ConvertStr, options : {keys = false, values = false} = {}) => (x : unknown) => unknown`
+#### `convertData : (convertStr : ConvertStr, options : Options = {}) => (x : unknown) => unknown`
 
-const snakifyStr = pipe(fromCamelCase, toSnakeCase)     // Until JS natively supports `|>` pipeline operator
-const camelizeStr = pipe(fromSepCase("_"), toCamelCase) // ...
+Where 
+
+```ts
+type ConvertStr = (str : string) => string
+type Options = {keys ?: false, values ?: false} // both default to `false`
+```
 
 ```ts
 const uppercase = (x : string) : string => x.toUpperCase()
