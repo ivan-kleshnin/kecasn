@@ -101,7 +101,7 @@ This common format is necesary to reduce the number of converting functions (exp
 
 ### Words to Case
 
-Each `toXyz` function expects words and produces a cased string.
+Each `toXyz` function accepts words and produces a cased string.
 
 #### `toCamelCase : (s : string) => string`
 
