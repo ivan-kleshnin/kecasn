@@ -1,12 +1,16 @@
 # KeCaSn
 
-Change strings from `snake_case` to `camelCase` or `kebab-case` and vice versa. 
+**WIP** Change strings from `snake_case` to `camelCase` or `kebab-case` and vice versa. 
 Supports nested arrays and objects.
 
-This library is built to automatically "upgrade" legacy APIs so you can use convenient and consistent
+This library was created to automatically "upgrade" legacy APIs so you can use convenient and consistent
 camelCase on the FE and keep using snake_case on the BE (API inputs & outputs).
 
 ## Realistic Example
+
+Many older APIs consume and return data in snake_case format and a rewrite may cost $$$.
+The attempt to ignore the problem will become a never ending struggle, cause snake_case will reach 
+form names, validators, etc and you'll constantly think which case to use where.
 
 ```ts
 import {pipe, fromSepCase, fromCamelCase, toSnakeCase, toCamelCase, convertData} from "kecasn"
@@ -174,8 +178,8 @@ N ^ 2 - N where N is the № of supported cases
 
 N = 2 => 2 ^ 2 - 2 = 2 (for N = 2 we get just 2 functions camelToSnake, snakeToCamel) 
 N = 3 => 3 ^ 2 - 3 = 6 (equals Z1)
-N = 4 => 4 ^ 2 - 4 = 12 (and it starts to)
-N = 5 => 5 ^ 2 - 5 = 20 (proliferate... Twice as much as the previous approach)
+N = 4 => 4 ^ 2 - 4 = 12 (and it starts to...)
+N = 5 => 5 ^ 2 - 5 = 20 (proliferate... Just 5 supported cases require twice as much functions!)
 ```
 
 For now we support just `snake`, `kebab` and `camel` so both approaches are equivalent (in terms
