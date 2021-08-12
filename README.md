@@ -85,42 +85,42 @@ and the following value of `posts` variable:
 
 ## API
 
-### `pipe : <X, Y, Z>(fn1 : (x : X) => Y, fn2 : (y : Y) => Z) => (x : X) : Z`
+#### `pipe : <X, Y, Z>(fn1 : (x : X) => Y, fn2 : (y : Y) => Z) => (x : X) : Z`
 
 Just a helper function to compose fn1 and fn2. `pipe(fn1, fn2)` is the same as `fn2(fn1)`.
 This to avoid extra declarations and typings in the absence of [native JS operator(s)](https://github.com/tc39/proposal-pipeline-operator).
 
-### `toCamelCase : (str : string) => string`
+#### `toCamelCase : (str : string) => string`
 
 ```ts
 toCamelCase("foo bar") // "fooBar"
 ```
 
-### `toSnakeCase : (str : string) => string`
+#### `toSnakeCase : (str : string) => string`
 
 ```ts
 toSnakeCase("foo bar") // "foo_bar"
 ```
 
-### `toKebabCase : (str : string) => string`
+#### `toKebabCase : (str : string) => string`
 
 ```ts
 toSnakeCase("foo bar") // "foo-bar"
 ```
 
-### `fromCamelCase : (str : string) => string`
+#### `fromCamelCase : (str : string) => string`
 
 ```ts
 fromCamelCase("fooBar") // "foo bar"
 ```
 
-### `fromSepCase : (sep : string) => (str : string) => string`
+#### `fromSepCase : (sep : string) => (str : string) => string`
 
 ```ts
 fromSepCase("_")("foo_bar:baz") // "foo bar:baz"
 ```
 
-## `convertData : (convertStr : ConvertStr, options : {keys = false, values = false} = {}) => (x : unknown) => unknown`
+#### `convertData : (convertStr : ConvertStr, options : {keys = false, values = false} = {}) => (x : unknown) => unknown`
 
 const snakifyStr = pipe(fromCamelCase, toSnakeCase)     // Until JS natively supports `|>` pipeline operator
 const camelizeStr = pipe(fromSepCase("_"), toCamelCase) // ...
