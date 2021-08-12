@@ -12,7 +12,7 @@ Many older APIs consume and return data in snake_case format and a rewrite may c
 Tolerating the problem is not an option as from the fetching layer snake_case will quickly 
 reach form field names, validators, etc and you'll have to constantly think which case to use where.
 
-An alternative (and proposed) approach is to lock snake_case and all the necessary conversion in a single
+An alternative (and proposed) approach is to lock snake_case and all the necessary conversions in single
 place: in the API handling layer.  Unless your req/resp data is huge (so it's processing becomes expensive) 
 this approach will result in more consistent and readable code. 
 
