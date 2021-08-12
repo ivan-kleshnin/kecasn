@@ -95,10 +95,11 @@ and the following value of `posts` variable:
 
 ## API
 
-### Words to Case
-
-All case casting functions work with **words** i.e. space separated strings. 
+API consists of several low-level functions like `toCamelCase` or `fromSnakeCase` and one high-level function `convertData`.
+Low-level case-casting functions work with (accept or return) **words** i.e. space separated strings. 
 This common format is necesary to reduce the number of converting functions (explained below).
+
+### Words to Case
 
 Each `toXyz` function expects words and produces a cased string.
 
