@@ -89,16 +89,23 @@ export type ConvertStr = (str : string) => string
 
 // EXTRA-2 =========================================================================================
 
-export const convertData = (convertStr : ConvertStr) => (x : unknown) : unknown => {
+export type ConvertDataOptions = {
+  keys ?: boolean
+  values ?: boolean
+}
+
+export const convertData = (convertStr : ConvertStr, options : ConvertDataOptions = {}) => (x : unknown) : unknown => {
+  const {keys : withKeys = false, values : withValues = false} = options
+
   if (isString(x)) {
-    return convertStr(x)
+    return withValues ? convertStr(x) : x
   } else if (isArray(x)) {
     const xs = x
-    return xs.map(x => convertData(convertStr)(x))
+    return xs.map(x => convertData(convertStr, options)(x))
   } else if (isPlainObject(x)) {
     const xs = x
     return Object.keys(xs).reduce((z, k) => ({...z,
-      [convertStr(k)]: convertData(convertStr)(xs[k])
+      [withKeys ? convertStr(k) : k]: convertData(convertStr, options)(xs[k])
     }), {})
   } else {
     return x

@@ -1,16 +1,19 @@
 // import {pipe, fromCamelCase, fromSepCase, toCamelCase, toSnakeCase, convertData} from "../src/index.js"
 //
-// // const camelizeData = convertData(convertStr(toCamelCase))
-//
 // const camelizeStr = pipe(fromSepCase("_"), toCamelCase)
-// const snakifyStr = pipe(fromSepCase("_"), toCamelCase)
+// const snakifyStr = pipe(fromCamelCase, toSnakeCase)
 //
-// const snakifyData = convertData(snakifyStr)
-// const camelizeData = convertData(camelizeStr)
+// const camelizeData = convertData(camelizeStr, {keys: true})
+// const snakifyData = convertData(snakifyStr, {keys: true, values: true})
 //
+// console.log("request | fields:")
 // console.log(snakifyData(["postScore:asc"]))
-// console.log(camelizeData(["post_score:asc"]))
 //
+// console.log("response | models:")
+// console.log(camelizeData({
+//   tags: ["PHP", "Python", "TypeScript"]
+// }))
+
 // // // import {toCamelCase, /*toSnakeCase, camelToSnake, snakeToCamel*/} from "../src/index.js"
 // // import {/*camelToSnakeObjDeep,*/ snakeToCamel, convertData, /*toSnakeCase, camelToSnake, snakeToCamel*/} from "../src/index.js"
 // //

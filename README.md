@@ -6,33 +6,34 @@ Supports nested arrays and objects.
 This library is built to automatically "upgrade" legacy APIs so you can use convenient and consistent
 camelCase on the FE and keep using snake_case on the BE (API inputs & outputs).
 
-## Example
+## Realistic Example
 
 ```ts
-import {pipe, toSnakeCase, toCamelCase, convertStr, convertData} from "kecasn"
+import {pipe, fromSepCase, fromCamelCase, toSnakeCase, toCamelCase, convertData} from "kecasn"
 
 // string -> string
-const camelizeStr = pipe(fromSepCase("_"), toCamelCase) // Until JS natively supports `|>` pipeline operator
-const snakifyStr = pipe(fromCamelCase, toSnakeCase)     // ...
+const snakifyStr = pipe(fromCamelCase, toSnakeCase)     // Until JS natively supports `|>` pipeline operator
+const camelizeStr = pipe(fromSepCase("_"), toCamelCase) // ...
 
 // unknown -> unknown
-const camelizeData = convertData(camelizeStr)
-const snakifyData = convertData(snakifyStr)
+const camelizeKeys = convertData(camelizeStr, {keys: true})   // values are not converted 
+const snakifyKeys = convertData(snakifyStr, {keys: true})     // values are not converted 
+const snakifyValues = convertData(snakifyStr, {values: true}) // keys are not converted
 
 export const fetchPosts = async (query : FetchPostsQuery) : Promise<FetchPostsResult> => {
   const result = await fetchAPI(["SEARCH", "/api/posts"], {
-    body: {                               // FE                      -> BE 
-      fields: snakifyData((query.fields), // ["postTitle"]           -> ["post_title"]
-      where: snakifyData(query.where),    // {postTitle: {ne: null}} -> {post_title: {ne: null}}
-      order: snakifyData(query.order),    // ["postTitle:asc"]       -> ["post_title:asc"]
-      page: query.page || 1,
-      limit: query.limit || 10,
+    body: {                                 // FE                         -> BE 
+      fields: snakifyValues((query.fields), // ["postTitle"]              -> ["post_title"]
+      where: snakifyKeys(query.where),      // {post_tags: ["TypeScript]} -> {post_tags: ["TypeScript]}
+      order: snakifyValues(query.order),    // ["postTitle:asc"]          -> ["post_title:asc"]
+      page: query.page || 1, 
+      limit: query.limit || 10
     },
   })
 
   return {
     ...result,                         // BE                           -> FE 
-    models: camelizeData(result.data), // [{post_title: "Some Title"}] -> [{postTitle: "Some Title"}]
+    models: camelizeKeys(result.data), // [{post_title: "Some Title"}] -> [{postTitle: "Some Title"}]
   }
 }
 ```
