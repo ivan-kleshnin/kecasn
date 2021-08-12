@@ -1,4 +1,13 @@
-// import {pipe, fromCamelCase, fromSepCase, toCamelCase, toSnakeCase, convertData} from "../src/index.js"
+import {pipe, fromCamelCase, fromSepCase, toCamelCase, toSnakeCase, convertData} from "../src/index.js"
+
+
+const uppercase = (x : string) : string => x.toUpperCase()
+
+console.log(convertData(uppercase, {values: true})("fooBar"))              // "FOOBAR"
+console.log(convertData(uppercase, {values: true})(["fooBar"]))            // ["FOOBAR"]
+console.log(convertData(uppercase, {values: true})({my_tags: ["fooBar"]})) // {my_tags: ["FOOBAR"]}
+console.log(convertData(uppercase, {keys: true})({my_tags: ["fooBar"]}))   // {MYTAGS: ["fooBar"]}
+
 //
 // const camelizeStr = pipe(fromSepCase("_"), toCamelCase)
 // const snakifyStr = pipe(fromCamelCase, toSnakeCase)
