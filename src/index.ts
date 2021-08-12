@@ -48,6 +48,9 @@ export const fromSepCase = (sep : string) => (str : string) : string => {
     .join(" ")
 }
 
+export const fromSnakeCase = fromSepCase("_")
+export const fromKebabCase = fromSepCase("-")
+
 // EXTRA ===========================================================================================
 
 type ConvertStr = (str : string) => string

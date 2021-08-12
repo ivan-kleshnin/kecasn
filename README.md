@@ -26,9 +26,9 @@ const snakifyStr = pipe(fromCamelCase, toSnakeCase)     // Until JS natively sup
 const camelizeStr = pipe(fromSepCase("_"), toCamelCase) // ...
 
 // unknown -> unknown
-const camelizeKeys = convertData(camelizeStr, {keys: true})   // values are not converted 
 const snakifyKeys = convertData(snakifyStr, {keys: true})     // values are not converted 
 const snakifyValues = convertData(snakifyStr, {values: true}) // keys are not converted
+const camelizeKeys = convertData(camelizeStr, {keys: true})   // values are not converted 
 
 export const fetchPosts = async (query : FetchPostsQuery) : Promise<FetchPostsResult> => {
   const result = await fetchAPI(["SEARCH", "/api/posts"], {
@@ -124,10 +124,16 @@ toSnakeCase("foo bar") // "foo-bar"
 fromCamelCase("fooBar") // "foo bar"
 ```
 
-#### `fromSepCase : (sep : string) => (str : string) => string`
+#### `fromSnakeCase : (str : string) => string`
 
 ```ts
-fromSepCase("_")("foo_bar:baz") // "foo bar:baz"
+fromSnakeCase("foo_bar:baz") // "foo bar:baz"
+```
+
+#### `fromKebabCase : (str : string) => string`
+
+```ts
+fromKebabCase("some-css-rule") // "some css rule"
 ```
 
 #### `convertData : (convertStr : ConvertStr, options : Options = {}) => (x : unknown) => unknown`
