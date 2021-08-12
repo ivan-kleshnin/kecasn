@@ -32,7 +32,7 @@ export const fetchPosts = async (query : FetchPostsQuery) : Promise<FetchPostsRe
 
   return {
     ...result,
-    models: camelizeData(result.data),
+    models: camelizeData(result.data), // [{post_title: "Some Title"}] -> [{postTitle: "Some Title"}]
   }
 }
 ```
