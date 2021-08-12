@@ -122,12 +122,14 @@ fromSepCase("_")("foo_bar:baz") // "foo bar:baz"
 
 #### `convertData : (convertStr : ConvertStr, options : Options = {}) => (x : unknown) => unknown`
 
-Where 
+Where `ConvertStr` and `Options` are:
 
 ```ts
 type ConvertStr = (str : string) => string
 type Options = {keys ?: false, values ?: false} // both default to `false`
 ```
+
+Example:
 
 ```ts
 const uppercase = (x : string) : string => x.toUpperCase()
@@ -147,9 +149,15 @@ This is to have one common format (space separated string) and avoid proliferati
 if more string cases are going to be supported. Compare the following:
 
 ```
-fromX, toX, fromY, toY, fromZ, toZ => 2 * N => 2 * 3 == 6
+fromX, toX, fromY, toY, fromZ, toZ 
+---
+2 * N => 2 * 3 = 6 // N: № of supported cases
+
 vs
-fromXtoY, fromXtoZ, fromYtoX, fromYtoZ, fromZtoX, fromZtoY => N ^ 2 - N => 3^2 - 3 == 6
+
+fromXtoY, fromXtoZ, fromYtoX, fromYtoZ, fromZtoX, fromZtoY 
+---
+N ^ 2 - N => 3^2 - 3 = 6 // N: № of supported cases
 ```
 
 Four supported cases would give: `2 * 4 vs 4^2 - 4 == 8 vs 12` and so on where `N ^ 2` 
