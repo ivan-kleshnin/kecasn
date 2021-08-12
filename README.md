@@ -19,11 +19,11 @@ superior in our code bases.
 **lib/api/fetchers.ts**
 
 ```ts
-import {pipe, fromSepCase, fromCamelCase, toSnakeCase, toCamelCase, convertData} from "kecasn"
+import {pipe, fromSnakeCase, fromCamelCase, toSnakeCase, toCamelCase, convertData} from "kecasn"
 
 // string -> string
-const snakifyStr = pipe(fromCamelCase, toSnakeCase)     // Until JS natively supports `|>` pipeline operator
-const camelizeStr = pipe(fromSepCase("_"), toCamelCase) // ...
+const snakifyStr = pipe(fromCamelCase, toSnakeCase)  // Until JS natively supports `|>` pipeline operator
+const camelizeStr = pipe(fromSnakeCase, toCamelCase) // ...
 
 // unknown -> unknown
 const snakifyKeys = convertData(snakifyStr, {keys: true})     // values are not converted 
@@ -95,46 +95,70 @@ and the following value of `posts` variable:
 
 ## API
 
-#### `pipe : <X, Y, Z>(fn1 : (x : X) => Y, fn2 : (y : Y) => Z) => (x : X) : Z`
+### Words to Case
 
-Just a tiny helper function to compose `fn1` and `fn2`. `pipe(fn1, fn2)` is the same as `fn2(fn1)`.
-Useful to avoid extra declarations and typings in the absence of [native JS operator(s)](https://github.com/tc39/proposal-pipeline-operator).
+All case casting functions work with **words** i.e. space separated strings. 
+This common format is necesary to reduce the number of converting functions (explained below).
+`toXxx` function expects words and produces a cased string.
 
 #### `toCamelCase : (s : string) => string`
 
 ```ts
-toCamelCase("foo bar") // "fooBar"
+toCamelCase("foo bar") // "fooBar"  -- words are formatted (to camelCase)
+toCamelCase("foo:bar") // "foo:bar" -- /
 ```
 
 #### `toSnakeCase : (s : string) => string`
 
 ```ts
-toSnakeCase("foo bar") // "foo_bar"
+toSnakeCase("foo bar") // "foo_bar" -- words are formatted (to snake_case)
+toSnakeCase("foo bar") // "foo:bar" -- /
 ```
 
 #### `toKebabCase : (s : string) => string`
 
 ```ts
-toSnakeCase("foo bar") // "foo-bar"
+toKebabCase("foo bar") // "foo-bar" -- words are formatted (to kebab-case)
+toKebabCase("foo:bar") // "foo:bar"  -- /
 ```
+
+### Case to Words
+
+`fromXxx` function expects a cased string and produces words.
 
 #### `fromCamelCase : (s : string) => string`
 
 ```ts
-fromCamelCase("fooBar") // "foo bar"
+fromCamelCase("fooBar")  // "foo bar" -- camelCase is parsed (to words)
+fromCamelCase("foo_bar") // "foo:bar" -- /
 ```
 
 #### `fromSnakeCase : (s : string) => string`
 
 ```ts
-fromSnakeCase("foo_bar:baz") // "foo bar:baz"
+fromSnakeCase("foo_bar_baz") // "foo bar baz" -- snake_case is parsed (to words)
+fromSnakeCase("foo:bar")     // "foo:bar"     -- /
 ```
 
 #### `fromKebabCase : (s : string) => string`
 
+
 ```ts
-fromKebabCase("some-css-rule") // "some css rule"
+fromKebabCase("some-css-rule") // "some css rule" -- kebab-case is parsed (to words)
+fromKebabCase("some:css")      // "some:css"      -- /
 ```
+
+### `fromSepCase`, `toSepCase`
+
+Undocumented (but exported) functions used to build `fromSnakeCase`, `toKebabCase` etc.
+Use them if you need a different separator.
+
+### Other
+
+#### `pipe : <X, Y, Z>(fn1 : (x : X) => Y, fn2 : (y : Y) => Z) => (x : X) : Z`
+
+Just a tiny helper function to compose `fn1` and `fn2`. `pipe(fn1, fn2)` is the same as `fn2(fn1)`.
+Useful to avoid extra declarations and typings in the absence of [native JS operator(s)](https://github.com/tc39/proposal-pipeline-operator).
 
 #### `convertData : (convertStr : ConvertStr, options : Options = {}) => (x : unknown) => unknown`
 
@@ -159,10 +183,6 @@ convertData(uppercase, {keys: true})({my_tags: ["fooBar"]})   // {MYTAGS: ["fooB
 More realistic example was given above.
 
 ## Design Notes
-
-Case casting functions that transform string expect the initial data to consist of words.
-This is to have one common format (space separated string) and avoid proliferation of convertors
-if more string cases are going to be supported. 
 
 `fromCamel, toCamel, fromSnake, toSnake` is an objectively better design than `camelToSnake, snakeToCamel`
 

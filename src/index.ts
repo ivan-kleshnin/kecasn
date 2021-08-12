@@ -20,32 +20,22 @@ export const pipe = <X, Y, Z>(fn1 : (x : X) => Y, fn2 : (y : Y) => Z) => (x : X)
 
 export const toCamelCase = (s : string) : string => {
   const [w, ...ws] = s.toLowerCase().split(" ")
-  return [w, ...ws.map(w => w[0].toUpperCase() + w.slice(1))]
-    .join("")
+  return [w, ...ws.map(w => w[0].toUpperCase() + w.slice(1))].join("")
 }
 
-export const toSnakeCase = (s : string) : string => {
-  const ws = s.toLowerCase().split(" ")
-  return ws
-    .join("_")
+export const toSepCase = (sep : string) => (s : string) : string => {
+  return s.toLowerCase().split(" ").join(sep)
 }
 
-export const toKebabCase = (s : string) : string => {
-  const ws = s.toLowerCase().split(" ")
-  return ws
-    .join("-")
-}
+export const toSnakeCase = toSepCase("_")
+export const toKebabCase = toSepCase("-")
 
 export const fromCamelCase = (s : string) : string => {
-  return s.split(/(?=[A-Z][a-z])/)
-    .map(x => x.toLowerCase())
-    .join(" ")
+  return s.split(/(?=[A-Z][a-z])/).map(x => x.toLowerCase()).join(" ")
 }
 
 export const fromSepCase = (sep : string) => (s : string) : string => {
-  return s.split(sep)
-    .map(x => x.toLowerCase())
-    .join(" ")
+  return s.split(sep).map(x => x.toLowerCase()).join(" ")
 }
 
 export const fromSnakeCase = fromSepCase("_")
