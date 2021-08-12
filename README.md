@@ -16,8 +16,9 @@ A better solution might be to lock snake_case and all the necessary conversion i
 In case your data is not huge (so it's processing becomes expensive), this approach has proven itself
 superior in our code bases. 
 
+**lib/api/fetchers.ts**
+
 ```ts
-// lib/api/fetchers.ts
 import {pipe, fromSepCase, fromCamelCase, toSnakeCase, toCamelCase, convertData} from "kecasn"
 
 // string -> string
