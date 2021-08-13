@@ -1,21 +1,40 @@
 # KeCaSn
 
 **WIP** Convert strings from `snake_case` to `camelCase` or `kebab-case` and vice versa. 
-Convert nested arrays and objects (models) as well. Upgrade your legacy API and use camelCase
-on the frontend with no refactoring.
+Convert nested arrays and objects (models). Modernize your legacy API and use camelCase
+on the Client with no fuss.
 
-This library was created to automatically "upgrade" API handlers so you can use convenient and consistent
-camelCase on the FE and keep using snake_case on the BE (API inputs & outputs). 
+This library is created to quickly "upgrade" older APIs so you can use convenient and consistent
+camelCase on the FE while keeping snake_case in HTTP reqs/resps and on the BE.
+
+```js
+snakifyStr("postTitle:asc") 
+// "post_title:asc"
+camelizeKeys({post_tags: ["REACT", "CSS-3"]}) 
+// {postTags: ["REACT", "CSS-3"]}
+```
+
+### Features
+
+- [x] **TypeScript:** static types out of the box, strict mode
+- [x] **Tested:** not really yet 😅
+- [x] **Universal:** works in Browser and NodeJS (with [ESM](https://2ality.com/2021/06/typescript-esm-nodejs.html#package-exports%3A-hiding-package-internals-and-providing-nicer-module-specifiers) or [bundlers](https://nextjs.org/blog/next-5))
+- [x] **Three-Shakeable:** ESM f.t.w
+- [x] **Lightweight:** ? bundle size 
+
+### Motivation
+
+Many older APIs still consume and produce data in snake_case format.
+Tolerating the problem is not an option as from the fetching layer snake_case quickly spreads to form field names, validators, etc. 
+You'll end up having case conversions all over the place and you'll have to constantly think which case to use where. 
+Full API rewrite is a great but very expensive option.
+
+An alternative (and proposed) approach is to lock snake_case and all related conversions in a single
+place: in the API handling layer.  Unless your req/resp data is huge (so it's processing becomes expensive) 
+this approach will result in more consistent and readable code. Kebab-oriented converters may be useful for CSS-in-JS libraries.
+Think of converting (React/Vue/...) component `props` to CSS rules.
 
 ## Realistic Example
-
-Many older APIs consume and return data in snake_case format and a rewrite may cost $$$.
-Tolerating the problem is not an option as from the fetching layer snake_case will quickly 
-reach form field names, validators, etc and you'll have to constantly think which case to use where.
-
-An alternative (and proposed) approach is to lock snake_case and all the necessary conversions in single
-place: in the API handling layer.  Unless your req/resp data is huge (so it's processing becomes expensive) 
-this approach will result in more consistent and readable code. 
 
 **lib/api/fetchers.ts**
 
@@ -221,4 +240,4 @@ of function №). But you got the point.
 
 ## Related Projects
 
-- [Change-Case](https://github.com/blakeembrey/change-case): string-only, more supported cases, more settings.
+- [Change-Case](https://github.com/blakeembrey/change-case): string-only, more supported cases, more settings, :package: [~3kB](https://bundlephobia.com/package/change-case@4.1.2) minified
