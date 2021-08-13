@@ -31,6 +31,7 @@ export const toSnakeCase = toSepCase("_")
 export const toKebabCase = toSepCase("-")
 
 export const fromCamelCase = (s : string) : string => {
+  // no support for fooBAR and foo6bar splitting until https://caniuse.com/js-regexp-lookbehind
   return s.split(/(?=[A-Z][a-z])/).map(x => x.toLowerCase()).join(" ")
 }
 

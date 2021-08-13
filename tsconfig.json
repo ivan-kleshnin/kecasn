@@ -1,4 +1,9 @@
 {
+  "ts-node": {
+    "moduleTypes": {
+      "jest.config.ts": "cjs"
+    }
+  },
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./dist",
@@ -10,8 +15,10 @@
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [
+      "jest"
+    ]
   },
-  "include": ["src"],
-  "exclude": ["**/*.test.js"]
+  "include": ["src"]
 }
