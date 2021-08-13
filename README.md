@@ -2,7 +2,7 @@
 
 > Convert strings from `snake_case` to `camelCase` or `kebab-case` and vice versa. 
 > Transform array values and objects keys, including nested. 
-> Uprade your legacy API to camelCase with no fuss.
+> Uprade your legacy API to camelCase with no fuss. :herb:
 
 The library aims to quickly wrap older APIs so you can use convenient and consistent
 camelCase on the Client while keeping snake_case on the BE & HTTP. Whenever API refactoring 
@@ -33,11 +33,11 @@ convertData(snakifyStr, {keys: true})({post_tags: ["TypeScript"]})
 
 ### Features
 
-- [x] **TypeScript:** static types out of the box, strict mode
-- [x] **Tested:** not really yet 😅
-- [x] **Universal:** works in Browser and NodeJS (with [ESM](https://2ality.com/2021/06/typescript-esm-nodejs.html#package-exports%3A-hiding-package-internals-and-providing-nicer-module-specifiers) or [bundlers](https://nextjs.org/blog/next-5))
-- [x] **Three-Shakeable:** ESM f.t.w
-- [x] **Lightweight:** ? bundle size 
+- [x] **TypeScript:** static types out of the box, strict mode.
+- [x] **Tested:** 16 Jest tests.
+- [x] **Universal:** works in Browser and NodeJS (with [ESM](https://2ality.com/2021/06/typescript-esm-nodejs.html#package-exports%3A-hiding-package-internals-and-providing-nicer-module-specifiers) or [bundlers](https://nextjs.org/blog/next-5)).
+- [x] **Three-Shakeable:** ESM f.t.w.
+- [x] **Lightweight:** ? bundle size .
 
 ### Motivation
 
@@ -258,3 +258,8 @@ of function №). But you got the point.
 ## Related Projects
 
 - [Change-Case](https://github.com/blakeembrey/change-case): string-only, more supported cases, more settings, :package: [~3kB](https://bundlephobia.com/package/change-case@4.1.2) minified
+
+## Meta
+
+- **Dependencies:** no
+- **License:** ISC (= MIT)
