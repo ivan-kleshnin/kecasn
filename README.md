@@ -240,4 +240,4 @@ of function №). But you got the point.
 
 ## Related Projects
 
-- [Change-Case](https://github.com/blakeembrey/change-case): string-only, more supported cases, more settings.
+- [Change-Case](https://github.com/blakeembrey/change-case): string-only, more supported cases, more settings, :package: [~3kB](https://bundlephobia.com/package/change-case@4.1.2) minified
