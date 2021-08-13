@@ -1,17 +1,34 @@
 # KeCaSn
 
-**WIP** Convert strings from `snake_case` to `camelCase` or `kebab-case` and vice versa. 
-Convert nested arrays and objects (models). Modernize your legacy API and use camelCase
-on the Client with no fuss.
+> Convert strings from `snake_case` to `camelCase` or `kebab-case` and vice versa. 
+> Transform array values and objects keys, including nested. 
+> Uprade your legacy API to camelCase with no fuss.
 
-This library is created to quickly "upgrade" older APIs so you can use convenient and consistent
-camelCase on the FE while keeping snake_case in HTTP reqs/resps and on the BE.
+The library aims to quickly wrap older APIs so you can use convenient and consistent
+camelCase on the Client while keeping snake_case on the BE & HTTP. Whenever API refactoring 
+is not possible or desirable **KeCaSn** comes to rescue!
+
+## Overview
+
+```
+$ yarn add kecasn
+or
+$ npm install kecasn
+```
 
 ```js
+import {pipe, fromCamelCase, toSnakeCase} from "kecasn"
+
+const snakifyStr = pipe(fromCamelCase, toSnakeCase)
+
 snakifyStr("postTitle:asc") 
 // "post_title:asc"
-camelizeKeys({post_tags: ["REACT", "CSS-3"]}) 
-// {postTags: ["REACT", "CSS-3"]}
+
+convertData(snakifyStr, {values: true})(["TypeScript"]) 
+// ["type-script"]
+
+convertData(snakifyStr, {keys: true})({post_tags: ["TypeScript"]}) 
+// {postTags: ["TypeScript"]}
 ```
 
 ### Features
