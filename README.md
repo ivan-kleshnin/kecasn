@@ -33,12 +33,12 @@ convertData(snakifyStr, {keys: true})({post_tags: ["TypeScript"]})
 
 ### Features
 
-- [x] **TypeScript:** :umbrella: static types out of the box, strict mode.
-- [x] **Tested:** :test_tube: tested by Jest.
-- [x] **Universal:** :sunny: works in Browser and NodeJS (with [ESM](https://2ality.com/2021/06/typescript-esm-nodejs.html#package-exports%3A-hiding-package-internals-and-providing-nicer-module-specifiers) or [bundlers](https://nextjs.org/blog/next-5)).
-- [x] **Composable**: :jigsaw: FP f.t.w.
-- [x] **Three-Shakeable:** :maple_leaf: ESM f.t.w.
-- [x] **Lightweight:** :package: [~1kB](https://bundlephobia.com/package/kecasn) minified.
+- [x] **TypeScript:** static types out of the box, strict mode :umbrella:
+- [x] **Tested:** tested by Jest :test_tube:
+- [x] **Universal:** works in Browser and NodeJS (with [ESM](https://2ality.com/2021/06/typescript-esm-nodejs.html#package-exports%3A-hiding-package-internals-and-providing-nicer-module-specifiers) or [bundlers](https://nextjs.org/blog/next-5)) :sunny:
+- [x] **Composable**: FP f.t.w. :jigsaw:
+- [x] **Three-Shakeable:** ESM f.t.w. :maple_leaf:
+- [x] **Lightweight:** [~1kB](https://bundlephobia.com/package/kecasn) minified :package: 
 
 ### Motivation
 
