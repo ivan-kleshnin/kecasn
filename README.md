@@ -37,7 +37,7 @@ convertData(snakifyStr, {keys: true})({post_tags: ["TypeScript"]})
 - [x] **Tested:** 16 Jest tests.
 - [x] **Universal:** works in Browser and NodeJS (with [ESM](https://2ality.com/2021/06/typescript-esm-nodejs.html#package-exports%3A-hiding-package-internals-and-providing-nicer-module-specifiers) or [bundlers](https://nextjs.org/blog/next-5)).
 - [x] **Three-Shakeable:** ESM f.t.w.
-- [x] **Lightweight:** ? bundle size .
+- [x] **Lightweight:** 📦 ? bundle size.
 
 ### Motivation
 
@@ -261,5 +261,5 @@ of function №). But you got the point.
 
 ## Meta
 
-- **Dependencies:** no
-- **License:** ISC (= MIT)
+- **Dependencies:** none.
+- **License:** ISC (= MIT).
