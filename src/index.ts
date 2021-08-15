@@ -1,15 +1,15 @@
 // HELPERS =========================================================================================
 type OpaqueDict = Record<string, unknown>
 
-let isPlainObject = (obj : unknown) : obj is OpaqueDict => {
+const isPlainObject = (obj : unknown) : obj is OpaqueDict => {
   return toString.call(obj) == "[object Object]"
 }
 
-let isArray = (arr : unknown) : arr is readonly unknown[] => {
+const isArray = (arr : unknown) : arr is readonly unknown[] => {
   return Array.isArray(arr)
 }
 
-let isString = (str : unknown) : str is string => {
+const isString = (str : unknown) : str is string => {
   return typeof str == "string"
 }
 
