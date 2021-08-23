@@ -16,10 +16,9 @@
   ],
   "author": "Ivan Kleshnin <ivan@paqmind.com> (https://paqmind.com)",
   "license": "ISC",
-  "type": "module",
   "scripts": {
     "ts-node": "node --loader ts-node/esm",
-    "build": "yarn build:esm && yarn build:cjs",
+    "build": "yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "test": "jest",
@@ -27,9 +26,9 @@
     "prepublishOnly": "yarn build"
   },
   "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "exports": "./dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "_module": "./dist/esm/index.js",
+  "_exports": "./dist/esm/index.js",
+  "types": "dist/cjs/index.d.ts",
   "files": [
     "/dist"
   ],
