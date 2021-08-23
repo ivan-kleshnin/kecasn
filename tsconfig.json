@@ -6,7 +6,7 @@
   },
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "./dist",
+    "outDir": "./dist/esm",
     "module": "es2020",
     "moduleResolution": "node",
     "esModuleInterop": true,
