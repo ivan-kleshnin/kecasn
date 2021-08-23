@@ -1,6 +1,6 @@
 {
   "name": "kecasn",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Convert strings between snake_case, camelCase, and kebab-case. Convert object keys and array values with ease.",
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
