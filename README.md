@@ -71,7 +71,7 @@ const camelizeKeys = convertData(camelizeStr, {keys: true})   // values are not 
 export const fetchPosts = async (query : FetchPostsQuery) : Promise<FetchPostsResult> => {
   const result = await fetchAPI(["SEARCH", "/api/posts"], {
     body: {                                 // FE                         -> BE 
-      fields: snakifyValues((query.fields), // ["postTitle"]              -> ["post_title"]
+      fields: snakifyValues(query.fields),  // ["postTitle"]              -> ["post_title"]
       where: snakifyKeys(query.where),      // {postTags: ["TypeScript"]} -> {post_tags: ["TypeScript"]}
       order: snakifyValues(query.order),    // ["postTitle:asc"]          -> ["post_title:asc"]
       page: query.page || 1, 

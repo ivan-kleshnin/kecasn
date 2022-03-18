@@ -1,24 +1,38 @@
 {
-  "ts-node": {
-    "moduleTypes": {
-      "jest.config.ts": "cjs"
-    }
-  },
+  // Config reference: https://aka.ms/tsconfig.json
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "./dist/esm",
-    "module": "es2020",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "target": "es6",
-    "declaration": true,
-    "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "types": [
-      "jest"
-    ]
+    // Language and Environment
+    "target": "ES2015", // Set the JavaScript language version for emitted JavaScript and include compatible library declarations.
+
+    // Modules
+    "module": "esnext", // Specify what module code is generated.
+    "moduleResolution": "node", // Specify how TypeScript looks up a file from a given module specifier.
+    "baseUrl": ".", // Lets you set a base directory to resolve non-absolute module names.
+
+    // Emit
+    "declaration": true, // Generate .d.ts files from TypeScript and JavaScript files in your project.
+    "declarationDir": "types", // Specify the output directory for generated declaration files.
+    "sourceMap": true, // Enables the generation of sourcemap files.
+
+    // Interop Constraints
+    "isolatedModules": true, // Ensure that each file can be safely transpiled without relying on other imports.
+    "esModuleInterop": true, // Emit additional JavaScript to ease support for importing CommonJS modules.
+    "forceConsistentCasingInFileNames": true, // Ensure that casing is correct in imports.
+
+    // Type Checking
+    "strict": true, // Enable all strict type-checking options.
+    "resolveJsonModule": true, // Allows importing modules with a .json extension.
+
+    // Completeness
+    "skipLibCheck": true // Skip type checking all .d.ts files.
+
+//    "types": [
+//      "jest"
+//    ]
   },
-  "include": ["src"]
+//  "ts-node": {
+//    "moduleTypes": {
+//      "jest.config.ts": "cjs"
+//    }
+//  },
 }
