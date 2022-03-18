@@ -10,7 +10,7 @@
     "snake",
     "kebab"
   ],
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "Ivan Kleshnin <ivan@paqmind.com> (https://paqmind.com)",
   "license": "ISC",
   "main": "dist/cjs/index.js",
