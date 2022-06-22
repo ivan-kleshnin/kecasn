@@ -8,6 +8,8 @@ The library aims to quickly wrap older APIs so you can use convenient and consis
 camelCase on the Client while keeping snake_case on the BE & HTTP. Whenever API refactoring 
 is not possible or desirable **KeCaSn** comes to rescue!
 
+WIP: stricter types. It's possible to type case changes in TS but it's not implemented yet.
+
 ## Overview
 
 ```
